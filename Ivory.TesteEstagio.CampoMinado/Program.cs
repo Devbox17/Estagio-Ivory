@@ -22,7 +22,7 @@ namespace Ivory.TesteEstagio.CampoMinado
             // Foi muito bom participar desse processo seletivo, achei que nem iam me chamar.
             // Por causa do meu currículo, pois ainda sou somente estudante de faculdade.
             // Ainda não prestei nenhum estágio. Ainda me falta conhecimento em POO.
-            // Saio desse processo aprendendo a jogar Campo Minado, e como é um processo seletivo de TI.
+            // Saio desse processo aprendendo a jogar Campo Minado, e entendendo como é um processo seletivo de TI.
             // Com certeza queria saber muito como eu manipularia esse algoritmo.
             // No mais um muito obrigado, e segue embaixo o que eu consegui fazer.
 
