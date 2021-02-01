@@ -11,61 +11,74 @@ namespace Ivory.TesteEstagio.CampoMinado
             Console.WriteLine(campoMinado.Tabuleiro);
 
             // Realize sua codificação a partir deste ponto, boa sorte!
-            Random rnd = new Random();
-            int numJogada = 2,
-                linha = 0,
-                coluna = 0;
+            Random random = new Random();
+            int linha = 0;
+            int coluna = 0;
 
-            // Bem, não consegui fazer a lógica, ainda falta conhecimento.
-            // Estou no 2° período da faculdade e queria testar meus conhecimento.
-            // A Ivory é uma empresa que tem o seu nome já bem registrado no mercado.
-            // Foi muito bom participar desse processo seletivo, achei que nem iam me chamar.
-            // Por causa do meu currículo, pois ainda sou somente estudante de faculdade.
-            // Ainda não prestei nenhum estágio. Ainda me falta conhecimento em POO.
-            // Saio desse processo aprendendo a jogar Campo Minado, e entendendo como é um processo seletivo de TI.
-            // Com certeza queria saber muito como eu manipularia esse algoritmo.
-            // No mais um muito obrigado, e segue embaixo o que eu consegui fazer.
-
-
-            while (campoMinado.JogoStatus <= 1)
+            while (campoMinado.JogoStatus != 2)
             {
-                // Um loop com a decisão do jogador da linha e da coluna.
-                Console.Write("Qual é a linha que você quer jogar? (De 1 a 9): ");
-                linha = int.Parse(Console.ReadLine());
-                Console.Write("Qual é a coluna que você quer jogar? (De 1 a 9): ");
-                coluna = int.Parse(Console.ReadLine());
+                try
+                {
+                    linha = int.Parse(Console.ReadLine());
+                    coluna = int.Parse(Console.ReadLine());
+                }
+                catch (System.FormatException)
+                {
+                    System.Console.WriteLine("\nVocê não digitou um número, repita novamente.");
+                } finally {
 
-                // Método Abrir recebe essas variáveis, e adiciona na matriz Jogo
-                campoMinado.Abrir(linha, coluna);
-                // Somente para efeito visual um console em uma variável para retornar as jogadas.
-                Console.Write($"\n--- {numJogada}° jogada ---");
-                Console.WriteLine($"\n\n{campoMinado.Tabuleiro}");
-                // Soma na variável numJogada para retornar uma nova "jogada".
-                numJogada++;
+                    campoMinado.Abrir(linha, coluna);
+                }
             }
 
-            // while (campoMinado.JogoStatus <= 1)
-            // {
-            //     // Um loop que pesquisa tanto linha quanto coluna, aleatóriamente. 
+             while (campoMinado.JogoStatus != 2)
+             {
+                 System.Console.Write("\nDigite o número da linha: ");
+                 int linha = int.Parse(Console.ReadLine());
+                 System.Console.Write("Digite o número da coluna: ");
+                 int coluna = int.Parse(Console.ReadLine());
 
-            //     campoMinado.Abrir(rnd.Next(1, 10), rnd.Next(1, 10));
-            //     // Somente para efeito visual um console em uma variável para retornar as jogadas.
-            //     Console.Write($"\n--- {numJogada}° jogada ---");
-            //     Console.WriteLine($"\n\n{campoMinado.Tabuleiro}");
-            //     // Soma na variável numJogada para retornar uma nova "jogada".
-            //     numJogada++;
-            // }
+                 campoMinado.Abrir(linha, coluna);
+                 Console.WriteLine(campoMinado.Tabuleiro);
+                 var pausa = Console.ReadKey();
+                 Console.Clear();
+             }
 
-            switch (campoMinado.JogoStatus)
+            if (campoMinado.JogoStatus == 1)
             {
-                // Um teste feito somente, para ilustrar para o jogador, se ele teve vitória ou não em jogar.
+                System.Console.WriteLine("\nMeus parabéns, você ganhou!");
+            }
+            else
+            {
+                Console.WriteLine(campoMinado.Tabuleiro);
+                System.Console.WriteLine("\nVocê perdeu, tente da próxima vez!");
+                System.Console.WriteLine("Quer tentar de novo?");
 
-                case 1:
-                    Console.WriteLine("\nParabéns você venceu o jogo! :)");
-                    break;
-                case 2:
-                    Console.WriteLine("\nQue pena, você perdeu! Se esforce mais da próxima vez! :(");
-                    break;
+                int resposta = 0;
+
+                while (resposta == 0)
+                {
+                    try
+                    {
+                        System.Console.Write("(1 - Sim / 2 - Não): ");
+                        resposta = int.Parse(Console.ReadLine());
+                    }
+                    catch (System.FormatException)
+                    {
+                        System.Console.WriteLine("\nVocê não digitou um número, repita novamente.");
+                    }
+                }
+
+                if (resposta == 1)
+                {
+                    Console.Clear();
+                    Program.Main(null);
+                }
+                else
+                {
+                    System.Console.WriteLine("------ FIM DE JOGO ------");
+                    var pausa = Console.ReadKey();
+                }
             }
         }
     }
